@@ -21,3 +21,16 @@ jobs:
         run: |
           cd data_structures/linked_lists/java
           mvn test
+  
+  test_queue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Queue Tests
+        run: |
+          cd data_structures/queues/java
+          mvn test
