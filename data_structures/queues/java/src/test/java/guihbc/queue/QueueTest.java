@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class QueueTest {
+    
     @Test
     public void shouldInsertInTheQueue() {
         Queue queue = new Queue(1);
