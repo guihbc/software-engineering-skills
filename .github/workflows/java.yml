@@ -1,0 +1,23 @@
+name: Java
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: [ "**/java/**" ]
+  pull_request:
+    branches: [ "main" ]
+    paths: [ "**/java/**" ]
+
+jobs:
+  test_linked_list:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Linked List Tests
+        run: |
+          cd data_structures/linked_lists/java
+          mvn test
