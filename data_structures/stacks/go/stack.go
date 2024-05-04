@@ -2,67 +2,49 @@ package main
 
 import "fmt"
 
-// struct representando a pilha
+// Struct representing the Stack
 type Stack struct {
-	top      int       // posição do top
-	capacity int       // tamanho da capacidade
-	data     []float64 // dados da pilha
-	length   int
+	top      int       // top position
+	capacity int       // capacity
+	data     []float64 // stack data
+	length   int       // current stack length
 }
 
-func (s *Stack) create(c int) { // função que cria uma pilha com os valores iniciais
+func (s *Stack) create(c int) { // init the stack properties given the stack size
 	s.top = -1
 	s.capacity = c
 	s.data = make([]float64, c)
+	s.length = 0
 }
 
-func (s *Stack) isEmpty() bool { // função que verifica se a pilha está vazia
+func (s *Stack) isEmpty() bool { // verify if the stack is empty
 	return s.top == -1
 }
 
-func (s *Stack) isFull() bool { // função que verifica se a pilha está cheia
+func (s *Stack) isFull() bool { // verify if the stack is full
 	return s.top == s.capacity-1
 }
 
-func (s *Stack) push(v float64) error { // função que empilha um elemento
-	if s.isFull() { // verifica se a pilha está cheia
-		return fmt.Errorf("stack overflow") // retorna um erro
+func (s *Stack) push(v float64) error { // stack up an element
+	if s.isFull() {
+		return fmt.Errorf("stack overflow")
 	}
 
-	s.top++           // incrementa 1 no atributo referente a posição do topo
-	s.data[s.top] = v // adiciona o elemento na posição do novo topo
-	s.length++
+	s.top++           // increment 1 to the top position
+	s.data[s.top] = v // add the element to the new top position
+	s.length++        // increment 1 in the stack length
 
-	return nil // retorna nil para o erro
+	return nil // return nil for the error
 }
 
-func (s *Stack) pop() (float64, error) { // função que desempilha um elemento
-	if s.isEmpty() { // verifica se a pilha está vazia
-		fmt.Println("Stack is empty")
-		return 0, fmt.Errorf("Stack is empty") // retorna 0 e um erro
+func (s *Stack) pop() (float64, error) { // unstack an element
+	if s.isEmpty() {
+		return 0, fmt.Errorf("Stack is empty") // return 0 and an error
 	}
 
-	element := s.data[s.top] // elemento que será removido
-	s.top--                  // decrementa 1 no atributo referente a posição do topo
-	s.length--
+	element := s.data[s.top] // the element to be removed
+	s.top--                  // decrease the top position
+	s.length--               // decrease the stack length
 
-	return element, nil // retorna o elemento removido e nil para o erro
-}
-
-func (s *Stack) getTop() float64 { // função que retona o elemento no topo
-	return s.data[s.top]
-}
-
-func (s *Stack) show() { // função que exibe a pilha na tela
-	fmt.Println(s.data[0 : s.top+1])
-}
-
-func main() {
-	var s *Stack = &Stack{} // define uma pilha chamada s
-	s.create(10)            // cria uma pilha com os valores iniciais
-	s.push(2)               // empilha o valor 2
-	s.push(7)               // empilha o valor 7
-	s.show()                // exibe a pilha na tela
-	s.pop()                 // desempilha um valor
-	s.show()                // exibe a pilha na tela
+	return element, nil // return the removed element and nil for the error
 }

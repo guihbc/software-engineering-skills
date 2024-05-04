@@ -22,25 +22,25 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 
 ### Data Structure list:
 
-- [x] [Arrays](https://github.com/guihcodes/software-engineering-skills/tree/develop/data_structures/arrays)
-- [x] [Linked lists](https://github.com/guihcodes/software-engineering-skills/tree/develop/data_structures/linked_lists)
-- [x] [Stacks](https://github.com/guihcodes/software-engineering-skills/tree/develop/data_structures/stacks)
-- [x] [Queues](https://github.com/guihcodes/software-engineering-skills/tree/develop/data_structures/queues)
+- [x] [Arrays](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/arrays)
+- [x] [Linked lists](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/linked_lists)
+- [x] [Stacks](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/stacks)
+- [x] [Queues](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/queues)
 - [ ] Trees
-- [x] [Graphs](https://github.com/guihcodes/software-engineering-skills/tree/develop/data_structures/graphs)
+- [x] [Graphs](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/graphs)
 - [ ] Heaps
 - [ ] Hash sets
 - [ ] Hash maps / Hash tables
 
 ### Algorithms list:
 
-- [x] [Binary search](https://github.com/guihcodes/software-engineering-skills/tree/develop/algorithms/binary_search)
-- [x] [Quicksort](https://github.com/guihcodes/software-engineering-skills/tree/develop/algorithms/quicksort)
-- [x] [Mergesort](https://github.com/guihcodes/software-engineering-skills/tree/develop/algorithms/mergesort)
-- [x] [A*](https://github.com/guihcodes/software-engineering-skills/tree/develop/algorithms/a_star)
+- [x] [Binary search](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/binary_search)
+- [x] [Quicksort](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/quicksort)
+- [x] [Mergesort](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/mergesort)
+- [x] [A*](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/a_star)
 - [ ] Breadth-first search
 - [ ] Depth-first search
-- [x] [Divide and conquer​](https://github.com/guihcodes/software-engineering-skills/tree/develop/algorithms/divide_and_conquer)
+- [x] [Divide and conquer](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/divide_and_conquer)
 - [ ] Dynamic programming
 
 ### Automated tests list:
