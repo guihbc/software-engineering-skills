@@ -12,7 +12,6 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 - [x] Sorting algorithms
 - [ ] Data Structures
 - [ ] Basic discrete mathematics
-- [x] Graphs
 - [ ] Big-O Notation
 - [ ] APIs
 - [ ] Automated tests
@@ -24,11 +23,11 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 - [x] [Linked lists](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/linked_lists)
 - [x] [Stacks](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/stacks)
 - [x] [Queues](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/queues)
-- [ ] Trees
+- [ ] [Trees](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/trees)
 - [x] [Graphs](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/graphs)
-- [ ] Heaps
-- [ ] Hash sets
-- [ ] Hash maps / Hash tables
+- [ ] [Heaps](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/heaps)
+- [ ] [Hash sets](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/hash_sets)
+- [ ] [Hash maps / Hash tables](https://github.com/guihbc/software-engineering-skills/tree/main/data_structures/hash_maps)
 
 ### Algorithms list:
 
@@ -36,23 +35,23 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 - [x] [Quicksort](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/quicksort)
 - [x] [Mergesort](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/mergesort)
 - [x] [A*](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/a_star)
-- [ ] Breadth-first search
-- [ ] Depth-first search
+- [ ] [Breadth-first search](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/bfs)
+- [ ] [Depth-first search](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/dfs)
 - [x] [Divide and conquer](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/divide_and_conquer)
-- [ ] Dynamic programming
+- [ ] [Dynamic programming](https://github.com/guihbc/software-engineering-skills/tree/main/algorithms/dynamic_programming)
 
 ### Automated tests list:
 
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] Component tests
-- [ ] Regression tests
-- [ ] Load tests
+- [ ] [Unit tests](https://github.com/guihbc/software-engineering-skills/tree/main/automated_test/unit_tests)
+- [ ] [Integration tests](https://github.com/guihbc/software-engineering-skills/tree/main/automated_test/integration_tests)
+- [ ] [Component tests](https://github.com/guihbc/software-engineering-skills/tree/main/automated_test/component_tests)
+- [ ] [Regression tests](https://github.com/guihbc/software-engineering-skills/tree/main/automated_test/regression_tests)
+- [ ] [Load tests](https://github.com/guihbc/software-engineering-skills/tree/main/automated_test/load_tests)
 
 ### SOLID principles list:
 
-- [ ] Single Responsibility principle
-- [ ] Open-Closed principle
-- [ ] Liskov Substitution principle
-- [ ] Interface Segregation principle
-- [ ] Dependency Inversion principle
+- [ ] [Single Responsibility principle](https://github.com/guihbc/software-engineering-skills/tree/main/solid/0_single_responsibility)
+- [ ] [Open-Closed principle](https://github.com/guihbc/software-engineering-skills/tree/main/solid/1_open_closed)
+- [ ] [Liskov Substitution principle](https://github.com/guihbc/software-engineering-skills/tree/main/solid/2_liskov_substitution)
+- [ ] [Interface Segregation principle](https://github.com/guihbc/software-engineering-skills/tree/main/solid/3_interface_segregation)
+- [ ] [Dependency Inversion principle](https://github.com/guihbc/software-engineering-skills/tree/main/solid/4_dependency_inversion)
