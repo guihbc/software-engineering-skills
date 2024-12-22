@@ -13,8 +13,6 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 - [ ] Data Structures
 - [ ] Basic discrete mathematics
 - [x] Graphs
-- [ ] Recursion
-- [ ] Oriented Object Programming
 - [ ] Big-O Notation
 - [ ] APIs
 - [ ] Automated tests
@@ -49,7 +47,7 @@ Repository containing the necessary skills to get a job as a Software Engineer a
 - [ ] Integration tests
 - [ ] Component tests
 - [ ] Regression tests
-- [ ] Performance tests
+- [ ] Load tests
 
 ### SOLID principles list:
 
