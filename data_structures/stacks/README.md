@@ -8,96 +8,69 @@ Here's a simple explanation with a visual representation:
 
 In the example above, you can see how the stack works. New elements are added on top of the stack, and when an element is removed, it's always the last one (at the top of the stack) that gets removed.
 
-Now, let's look at a Go code example that represents a stack:
+Now, let's take a look at a Java code example representing a simple stack implementation:
 
-```Go
-package main
+```java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.function.Consumer;
 
-import "fmt"
+public class Stack<T> {
+    private int top;
+    private int length;
+    private List<T> data;
 
-type Stack struct {
-	top      int
-	capacity int
-	data     []float64
-}
+    public Stack() {
+        this.top = -1;
+        this.length = 0;
+        this.data = new ArrayList<T>();
+    }
 
-func (s *Stack) create(c int) {
-	s.top = -1
-	s.capacity = c
-	s.data = make([]float64, c)
-}
+    public boolean isEmpty() {
+        return this.length == 0;
+    }
 
-func (s *Stack) isEmpty() bool {
-	return s.top == -1
-}
+    public void push(T element) {
+        this.top++;
+        this.length++;
+        this.data.add(element);
+    }
 
-func (s *Stack) isFull() bool {
-	return s.top == s.capacity
-}
+    public T getTop() {
+        if (this.isEmpty()) {
+            throw new RuntimeException("empty stack");
+        }
 
-func (s *Stack) push(v float64) error {
-	if s.isFull() {
-		fmt.Println("Stack is full")
-		return fmt.Errorf("Stack is full")
-	}
+        return this.data.get(top);
+    }
 
-	s.top++
-	s.data[s.top] = v
+    public T pop() {
+        if (this.isEmpty()) {
+            throw new RuntimeException("empty stack");
+        }
 
-	return nil
-}
+        T element = this.data.remove(top);
 
-func (s *Stack) pop() (float64, error) {
-	if s.isEmpty() {
-		fmt.Println("Stack is empty")
-		return 0, fmt.Errorf("Stack is empty")
-	}
+        this.top--;
+        this.length--;
+        return element;
+    }
 
-	element := s.data[s.top]
-	s.top--
-
-	return element, nil
-}
-
-func (s *Stack) getTop() float64 {
-	return s.data[s.top]
-}
-
-func (s *Stack) show() {
-	fmt.Println(s.data[0 : s.top+1])
-}
-
-func main() {
-	var s *Stack = &Stack{}
-	s.create(10)
-	s.push(2)
-	s.push(7)
-	s.show()
-	s.pop()
-	s.show()
+    public void forEach(Consumer<T> consumer) {
+        for (int i = this.top; i >= 0; i--) {
+            consumer.accept(this.data.get(i));
+        }
+    }
 }
 ```
 
-In this code, we have implemented a stack in Go:
+In the code above we have a simple stack structure with 3 properties:
 
-1. We define a `Stack` struct with attributes such as `top` (the current top index), `capacity` (maximum stack size), and `data` (the array to store the stack elements).
+- `top`: The index of the top element.
+- `length`: The length.
+- `data`: A list of a generic type to store the data.
 
-2. The `create` method initializes the attributes of the stack with initial values.
+And we have 3 main methods:
 
-3. The `isEmpty` method checks whether the stack is empty based on the value of `top`.
-
-4. The `isFull` method checks whether the stack is full based on the value of `top` compared to the capacity.
-
-5. The `push` method is responsible for pushing a new element onto the stack. It first checks if the stack is full. If it is, an error is returned. Otherwise, it increments the `top`, adds the element to the top position in the data array, and returns no error.
-
-6. The `pop` method is responsible for popping (removing) the top element from the stack. It first checks if the stack is empty. If it is, an error is returned. Otherwise, it retrieves the element at the current top position, decrements the `top`, and returns the element along with no error.
-
-7. The `getTop` method simply returns the element at the top of the stack without removing it.
-
-8. The `show` method displays the current contents of the stack from the bottom to the top.
-
-In the `main` function, we demonstrate the use of this stack with pushes, pops, and display of the stack's contents.
-
-Comments in the code provide further explanations for each part.
-
-This code provides a simple example of a stack data structure implemented in Go.
+- `push`: The top position will be the next one, the length will be incremented by 1 and the new element will be added to the top of the stack.
+- `pop`: This method checks if the stack is empty. If it is, an exception is thrown indicating that the stack is empty. If it is not empty, it retrieves the top element, decrements the top index and the length by 1, and then returns the removed top element.

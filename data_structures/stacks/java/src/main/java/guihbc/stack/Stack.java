@@ -1,53 +1,57 @@
 package guihbc.stack;
 
-public class Stack {
-    private int top;
-    private final int capacity;
-    private final double[] data;
-    private int length;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.function.Consumer;
 
-    public Stack(int capacity) {
+public class Stack<T> {
+    private int top;
+    private int length;
+    private List<T> data;
+
+    public Stack() {
         this.top = -1;
-        this.capacity = capacity;
-        this.data = new double[capacity];
         this.length = 0;
+        this.data = new ArrayList<T>();
+    }
+
+    public boolean isEmpty() {
+        return this.length == 0;
     }
 
     public int getLength() {
         return this.length;
     }
 
-    public boolean isEmpty() {
-        return this.top == -1;
-    }
-
-    public boolean isFull() {
-        return this.top == this.capacity - 1;
-    }
-
-    public void push(double element) throws RuntimeException {
-        if (this.isFull()) {
-            throw new RuntimeException("stack overflow");
-        }
-
+    public void push(T element) {
         this.top++;
-        this.data[this.top] = element;
         this.length++;
+        this.data.add(element);
     }
 
-    public double pop() {
+    public T getTop() {
         if (this.isEmpty()) {
             throw new RuntimeException("empty stack");
         }
 
-        double element = this.data[this.top];
+        return this.data.get(top);
+    }
+
+    public T pop() {
+        if (this.isEmpty()) {
+            throw new RuntimeException("empty stack");
+        }
+
+        T element = this.data.remove(top);
+
         this.top--;
         this.length--;
-
         return element;
     }
 
-    public double getTopElement() {
-        return this.data[this.top];
+    public void forEach(Consumer<T> consumer) {
+        for (int i = this.top; i >= 0; i--) {
+            consumer.accept(this.data.get(i));
+        }
     }
 }
