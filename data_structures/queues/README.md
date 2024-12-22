@@ -8,85 +8,43 @@ Here's a simple explanation with a visual representation:
 
 In the example above, you can see how the queue works. New elements are added at the back of the queue, and when an element is removed, it's always the first one (at the front of the queue) that gets removed.
 
-Now, let's look at a Go code example that represents a circular queue:
+Now, let's look at a Java code example that represents a simple implementation of a queue:
 
-```Go
-package main
+```java
+import java.util.LinkedList;
+import java.util.List;
 
-import (
-	"fmt"
-	"unsafe"
-)
+public class Queue<T> {
+    private List<T> data;
+    private int length;
 
-type Queue struct {
-	capacity int
-	data     []float64
-	first    int
-	last     int
-	nItems   int
-}
+    public Queue() {
+        this.data = new LinkedList<>();
+        this.length = 0;
+    }
 
-func (q *Queue) create(c int) {
-	q.capacity = c
-	q.data = make([]float64, c*int(unsafe.Sizeof(c)))
-	q.first = 0
-	q.last = -1
-	q.nItems = 0
-}
+    public void enqueue(T value) {
+        this.data.add(value);
+        this.length++;
+    }
 
-func (q *Queue) insert(v float64) {
-	if q.last == q.capacity-1 {
-		q.last = -1
-	}
+    public T dequeue() {
+        if (this.length == 0) {
+            throw new RuntimeException("Empty queue");
+        }
 
-	q.last++
-	q.data[q.last] = v
-	q.nItems++
-}
-
-func (q *Queue) remove() {
-	q.first++
-
-	if q.first == q.capacity {
-		q.first = 0
-	}
-
-	q.nItems--
-}
-
-func (q *Queue) show() {
-	fmt.Println(q.data[q.first : q.last+1])
-}
-
-func main() {
-	var q *Queue = &Queue{}
-	q.create(10)
-	q.insert(4)
-	q.insert(3)
-	q.show()
-	q.remove()
-	q.show()
-	q.insert(10)
-	q.show()
-	q.remove()
-	q.show()
+        this.length--;
+        return this.data.remove(0);
+    }
 }
 ```
 
-In this code, we have implemented a circular queue in Go:
+In the code above we have a simple queue structure with 2 properties:
 
-1. We define a `Queue` struct with attributes such as `capacity` (maximum number of items), `data` (the data store), `first` (index of the first element in the queue), `last` (index of the last element in the queue), and `nItems` (number of items currently in the queue).
+- `data`: A List to store the queue data
+- `length`: The queue length
 
-2. The `create` method initializes the attributes of the queue with initial values.
+And we have 2 main methods:
 
-3. The `insert` method adds a new element to the queue. If the `last` index reaches the end of the capacity, it wraps around to the beginning of the queue. This behavior creates a circular queue.
-
-4. The `remove` method removes the oldest element from the queue. It advances the `first` index and wraps around to the beginning of the queue if necessary.
-
-5. The `show` method displays the current contents of the queue.
-
-In the `main` function, we demonstrate the use of this queue with insertions, removals, and display.
-
-Comments in the code provide further explanations for each part.
-
-This code provides a simple example of a queue data structure implemented in Go.
+- `enqueue`: This method adds the new element to the List and increments the `length` variable by 1.
+- `dequeue`: This method verifies if the queue is empty if it's true an exception will be thrown saying the queue is empty, if it's false the length variable is decreased by 1, then the first element of the list is removed and returned.
