@@ -1,6 +1,6 @@
 # Linked Lists
 
-A linked list is a data structure that represents a sequence of data elements of the same type. Each data element is stored in a node, which contains the element itself and the address of the next node. In this explanation, elements are of type `interface{}`, meaning they can be any data type.
+A linked list is a data structure that represents a sequence of data elements of the same type. Each data element is stored in a node, which contains the element itself and the address of the next node, that's why it's called a Linked list because each node is linked to the next one.
 
 It's important to note that a linked list does not have a specific size limit; these data structures, known as dynamic lists, can grow or shrink in size as needed.
 
@@ -8,142 +8,144 @@ In the diagram below, you can see the operation of a linked list, where each nod
 
 ![linked_list](https://user-images.githubusercontent.com/48635609/102827421-4c225680-43c1-11eb-8f9d-67812d386563.gif)
 
-Here's an example of a linked list implemented in Go:
+Now, let's take a look at a Java code example representing a simple linked list implementation:
 
-```Go
-package main
+```java
+// Node.java
 
-import (
-    "fmt"
-)
+public class Node<T> {
+    private Node<T> next;
+    private T value;
 
-type Node struct {
-    element interface{}
-    next    *Node
-}
-
-func (n *Node) isEmpty() bool {
-    return n == nil
-}
-
-type LinkedList struct {
-    first *Node
-}
-
-func (l *LinkedList) create() {
-    l.first = nil
-}
-
-func (l *LinkedList) insert(e interface{}) {
-    var node *Node = &Node{}
-    node.element = e
-    node.next = l.first
-    l.first = node
-}
-
-func (l *LinkedList) isEmpty() bool {
-    return l.first == nil
-}
-
-func (l *LinkedList) search(e interface{}) *Node {
-    for n := l.first; n != nil; n = n.next {
-        if n.element == e {
-            return n
-        }
+    public Node(T value) {
+        this.value = value;
+        this.next = null;
     }
 
-    return nil
-}
-
-func (l *LinkedList) remove(e interface{}) int {
-    var previous *Node = nil
-    var p *Node = l.first
-
-    for p != nil && p.element != e {
-        previous = p
-        p = p.next
+    public Node next() {
+        return this.next;
     }
 
-    if p == nil {
-        return -1
+    public void setNext(Node next) {
+        this.next = next;
     }
 
-    if previous == nil {
-        l.first = p.next
-    } else {
-        previous.next = p.next
+    public T value() {
+        return this.value;
     }
 
-    return 0
-}
-
-func (l *LinkedList) free() {
-    for l.first != nil {
-        var temp *Node = l.first.next
-        l.first = nil
-        l.first = temp
+    public void setValue(T value) {
+        this.value = value;
     }
-}
-
-func (l *LinkedList) show() {
-    fmt.Print("[ ")
-    print(l.first)
-    fmt.Println("]")
-}
-
-func print(n *Node) {
-    if !n.isEmpty() {
-        print(n.next)
-        fmt.Print(n.element)
-        fmt.Print(" ")
-    }
-}
-
-func main() {
-    var list *LinkedList = &LinkedList{}
-    list.create()
-    list.insert(1)
-    list.insert(2)
-    list.insert(3)
-    list.insert(4)
-    list.insert(5)
-    list.insert(6)
-    list.insert(7)
-    list.show()
-    list.remove(2)
-    list.show()
 }
 ```
 
-In the code above, the main components are as follows:
+```java
+// LinkedList.java
 
-1. A `Node` struct representing the nodes of the linked list, with the attributes:
+public class LinkedList<T> {
+    private Node<T> head;
+    private Node<T> tail;
+    private int length;
 
-   - `element` - The data to be stored in the node.
-   - `next` - The address of the next node in the list.
+    public LinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
 
-   The `isEmpty` method checks if a node is empty (nil).
+    public boolean isEmpty() {
+        return this.length == 0;
+    }
 
-2. A `LinkedList` struct representing the linked list, with the attribute:
+    public int length() {
+        return this.length;
+    }
 
-   - `first` - The address of the first node in the list.
+    public Node<T> head() {
+        return this.head;
+    }
 
-   The `create` method initializes a new list.
+    public Node<T> tail() {
+        return this.tail;
+    }
 
-   The `insert` method inserts a new element into the list. It creates a new node, sets its element to the given value, and makes it point to the current first node. Then, it updates the first node to be the newly created node.
+    public void add(T element) {
+        Node<T> node = new Node<>(element);
 
-   The `isEmpty` method checks if the list is empty.
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+            this.length++;
 
-   The `search` method searches for a specific element in the list. It iterates through the nodes in the list and returns the node containing the element if found, or nil if not.
+            return;
+        }
 
-   The `remove` method removes an element from the list. It creates two nodes: one that keeps track of the previous node (before the one to be removed) and another to traverse the list. It iterates through the list to find the element to be removed. If it's found, the `previous` node is updated to point to the node after the one being removed. If the `previous` node is nil, it means the first node is being removed, so the first node is updated to the next node. If the `previous` node is not nil, it simply bypasses the node to be removed.
+        this.tail.setNext(node);
+        this.tail = node;
+        this.length++;
+    }
 
-   The `free` method frees up memory by removing all nodes in the list.
+    public void remove(T value) {
+        if (this.isEmpty()) {
+            return;
+        }
 
-   The `show` method displays the elements of the list.
+        if (value.equals(this.head.value())) {
+            this.head = this.head.next();
 
-   The `print` function is a helper function to display the elements of the list in the `show` method.
+            if (this.head == null) {
+                this.tail = null;
+            }
 
-In the `main` function, an example linked list is created, elements are inserted, and then one element is removed, followed by displaying the list before and after the removal.
+            this.length--;
+            return;
+        }
 
-The comments in the code provide additional explanations for each part.
+        Node<T> current = this.head;
+        Node<T> previous = null;
+
+        // Find the element
+        while (current != null && !value.equals(current.value())) {
+            previous = current;
+            current = current.next();
+        }
+
+        // Element not found
+        if (current == null) {
+            return;
+        }
+
+        // "removing" the element
+        previous.setNext(current.next());
+
+        // "removing" the last element
+        if (current == this.tail) {
+            this.tail = previous;
+        }
+
+        this.length--;
+    }
+}
+```
+
+In the example above we have a simple `LinkedList` implementation, first we have a Node class with 2 properties:
+
+- `next`: A Node representing the next node of the list
+- `value`: The value stored in the list
+
+In the LinkedList class we have 3 properties:
+
+- `head`: The Node representing the first element in the list
+- `tail`: The Node representing the last element in the list
+- `length`: The list length
+
+And the two main methods:
+
+- `add(T element)`: This method checks if the list is empty. If it is, it sets the new node as both the head and the tail of the list and increments the length by 1. If the list is not empty, it appends the new node to the end of the list. In this case, the next pointer of the current tail is updated to reference the new node, and the tail is updated to the new node, effectively making it the new end of the list.
+
+- `remove(T element)`: This method removes an element from the list by its value. It does not actually delete the node but instead adjusts the links between nodes to "ignore" the node with the target value.
+
+First, it checks if the element to be removed is the head of the list. If so, it updates the head to the next node. If the new head is null, this means the list is now empty, and the tail is also set to null.
+
+If the element is not the head, the method searches for the element in the list by comparing values in a loop. If the element is not found (i.e., current becomes null), the method simply returns. If the element is found, it updates the next pointer of the previous node to skip over the node being removed, thereby effectively removing it from the list. Finally, if the removed node was the tail, the tail is updated to the previous node. The length of the list is then decremented by 1.

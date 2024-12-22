@@ -1,63 +1,86 @@
 package guihbc.list;
 
-public class LinkedList {
-    private Node head;
+public class LinkedList<T> {
+    private Node<T> head;
+    private Node<T> tail;
     private int length;
 
-    public Node getHead() {
-        return head;
-    }
-
-    public void setHead(Node first) {
-        this.head = first;
-    }
-
-    public void insert(Object element) {
-        Node node = new Node();
-        node.setElement(element);
-        node.setNext(this.head);
-        this.setHead(node);
-        length++;
+    public LinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
     }
 
     public boolean isEmpty() {
-        return this.head == null;
-    }
-
-    public Node search(Object element) {
-        for(Node n = this.head; n != null; n = n.getNext()) {
-            if(n.getElement() == element) {
-                return n;
-            }
-        }
-
-        return null;
+        return this.length == 0;
     }
 
     public int length() {
         return this.length;
     }
 
-    public int remove(Object element) {
-        Node previous = null;
-        Node first = this.head;
+    public Node<T> head() {
+        return this.head;
+    }
 
-        while(first != null && first.getElement() != element) {
-            previous = first;
-            first = first.getNext();
+    public Node<T> tail() {
+        return this.tail;
+    }
+
+    public void add(T element) {
+        Node<T> node = new Node<>(element);
+
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+            this.length++;
+
+            return;
         }
 
-        if (first == null) {
-            return -1; // Not found
+        this.tail.setNext(node);
+        this.tail = node;
+        this.length++;
+    }
+
+    public void remove(T value) {
+        if (this.isEmpty()) {
+            return;
         }
 
-        if (previous == null) {
-            this.head = first;
-        } else {
-            previous.setNext(first.getNext());
+        if (value.equals(this.head.value())) {
+            this.head = this.head.next();
+
+            if (this.head == null) {
+                this.tail = null;
+            }
+
+            this.length--;
+            return;
         }
 
-        length--;
-        return 0;
+        Node<T> current = this.head;
+        Node<T> previous = null;
+
+        // Find the element
+        while (current != null && !value.equals(current.value())) {
+            previous = current;
+            current = current.next();
+        }
+
+        // Element not found
+        if (current == null) {
+            return;
+        }
+
+        // "removing" the element
+        previous.setNext(current.next());
+
+        // "removing" the last element
+        if (current == this.tail) {
+            this.tail = previous;
+        }
+
+        this.length--;
     }
 }
