@@ -1,7 +1,5 @@
-<img src="./google-logo.png" width="200" height="203" align="left">
-
-# Google Skills
-Repository containing the necessary skills to get a job as a Software Engineer at Google according to the [video by Filipe Deschamps [pt-BR]](https://www.youtube.com/watch?v=8I86WmxdzzA). [Mentioned article [en]](https://www.educative.io/blog/google-coding-interview).
+# Software Engineering Skills
+Repository containing the necessary tech skills of a software engineer
 
 <br/>
 <br />
