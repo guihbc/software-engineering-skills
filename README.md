@@ -1,9 +1,6 @@
 # Software Engineering Skills
 Repository containing the necessary tech skills of a software engineer
 
-<br/>
-<br />
-
 ## Skills
 
 - [ ] General Algorithms
